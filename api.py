@@ -8,10 +8,7 @@ import time
 
 
 def spotify_login(spotify_client_id = None, spotify_client_secret = None, redirect_uri = None):
-    # spotify_client_id = "3904b102b7034f2bb834545ca4cffc2e"
-    # spotify_client_secret = "cb0a0ca10f81437fb67a8e66f7154d3a"
     scope = "user-read-playback-state,user-modify-playback-state"
-    # redirect_uri = "http://localhost:8888/callback"
     if spotify_client_id is None or spotify_client_secret is None or redirect_uri is None:
         load_dotenv()
         spotify_oauth = SpotifyOAuth(scope = scope)
