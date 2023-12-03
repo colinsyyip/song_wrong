@@ -1,0 +1,8 @@
+bin*
+include*
+share*
+lib*
+.env
+*.cfg
+.cache
+__pycache__*
