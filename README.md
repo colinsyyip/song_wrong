@@ -8,7 +8,7 @@ SPOTIPY_CLIENT_ID = "spotify_client_id"
 SPOTIPY_CLIENT_SECRET = "spotify_client_secret"
 SPOTIPY_REDIRECT_URI = "redirect_uri"
 ```
-For local use, it's recommended to set reidrect to `http://localhost:8888/callback` for simplicity.
+For local use, it's recommended to set redirect to `http://localhost:8888/callback` for simplicity.
 
 It's recommended to run in a `venv` to avoid dependancy issues. The following commands will set up a `venv` and install the required modules.
 
