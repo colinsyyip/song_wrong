@@ -30,7 +30,7 @@ python3 song_wrong.py -p 80s -d "RatBook Pro" -n 5 -l 20
 ## Reference Docs
 Help text for parameters below: 
 ```
- PLAYLIST: -p , --playlist, Playlist must be one of the keys in playlists.json or the word, shuffle, for a random decade each time
+PLAYLIST: -p , --playlist, Playlist must be one of the keys in playlists.json or the word, shuffle, for a random decade each time
 DEVICE: -d , --device, Device name to play on. This must be an exact string match. No value will default to the first device returned.
 LENGTH: -l, --length, Length of each snippet in seconds, starting from the beginning of the song. It is not recommned for an l <= 5, due to API restrictions.
 NUMBER: -n, --number, The number of songs to loop through. A value of -1 will loop indefinitely untril CTRL+C to end the program.
