@@ -5,6 +5,7 @@ import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 from spotipy.exceptions import SpotifyException
 import time
+from tts import play_track_details
 
 
 def spotify_login(spotify_client_id = None, spotify_client_secret = None, redirect_uri = None):
@@ -96,7 +97,7 @@ def snippet_playback(snippet_length: int = 15, **kwargs):
     return kwargs
 
 
-def play_random_snippet_pl(pl_data, sp_obj, snippet_length, to_play_device):
+def play_random_snippet_pl(pl_data, sp_obj, snippet_length, to_play_device, info_playback):
     """
     Play random track of given pl for snippet_length on to_play_device. to_play_device is converted to Spotify device id
     """
@@ -109,9 +110,18 @@ def play_random_snippet_pl(pl_data, sp_obj, snippet_length, to_play_device):
         to_play_device_id = available_devices[available_devices.keys()[0]]
     else:
         to_play_device_id = available_devices[to_play_device]
+    
+    if info_playback == "b":
+        track_tuple = (track_data['name'], track_data['artist'])
+        play_track_details(track_tuple)
+
     snippet_playback(snippet_length = snippet_length,
                      device_id = to_play_device_id,
                      track_uri = track_id,
                      sp_obj = sp_obj)
+    
+    if info_playback == "a":
+        track_tuple = (track_data['name'], track_data['artist'])
+        play_track_details(track_tuple)
 
     return track_data

@@ -34,4 +34,5 @@ PLAYLIST: -p , --playlist, Playlist must be one of the keys in playlists.json or
 DEVICE: -d , --device, Device name to play on. This must be an exact string match. No value will default to the first device returned.
 LENGTH: -l, --length, Length of each snippet in seconds, starting from the beginning of the song. It is not recommned for an l <= 5, due to API restrictions.
 NUMBER: -n, --number, The number of songs to loop through. A value of -1 will loop indefinitely untril CTRL+C to end the program.
+ANSWER: -a, --answer, Track answer readout. Options are b for before, a for after, and None for no read out. 
 ```

@@ -6,3 +6,4 @@ lib*
 *.cfg
 .cache
 __pycache__*
+tmp*

@@ -18,6 +18,9 @@ parser.add_argument("-l", "--length",
 parser.add_argument("-n", "--number", 
                     default = 1,
                     help = "The number of songs to loop through. A value of -1 will loop indefinitely untril CTRL+C to end the program.")
+parser.add_argument("-a", "--answer",
+                    default = "b",
+                    help = "Track answer readout. Options are b for before, a for after, and any other value for no read out.")
 
 args = parser.parse_args()
 
@@ -35,6 +38,7 @@ else:
 
 length = int(args.length)
 number = int(args.number)
+answer = args.answer
 device = args.device
 
 if number == -1:
@@ -45,7 +49,8 @@ if number == -1:
             pl_data = spotify_obj.playlist(pl_link)
         track_info = play_random_snippet_pl(pl_data, sp_obj = spotify_obj,
                                             snippet_length = length,
-                                            to_play_device = device)
+                                            to_play_device = device,
+                                            info_playback = answer)
         track_info_tuple = (track_info['name'], track_info['artist'])
         print("Track Name: %s \t Artist: %s" % track_info_tuple)
 else:
@@ -57,7 +62,8 @@ else:
             pl_data = spotify_obj.playlist(pl_link)
         track_info = play_random_snippet_pl(pl_data, sp_obj = spotify_obj,
                                             snippet_length = length,
-                                            to_play_device = device)
+                                            to_play_device = device,
+                                            info_playback = answer)
         track_info_tuple = (track_info['name'], track_info['artist'])
         print("Track Name: %s \t Artist: %s" % track_info_tuple)
         i += 1
