@@ -97,12 +97,19 @@ def snippet_playback(snippet_length: int = 15, **kwargs):
     return kwargs
 
 
-def play_random_snippet_pl(pl_data, sp_obj, snippet_length, to_play_device, info_playback):
+def play_snippet_pl(pl_data, sp_obj, snippet_length, to_play_device, info_playback, shuffle, pl_idx: int = 0):
     """
-    Play random track of given pl for snippet_length on to_play_device. to_play_device is converted to Spotify device id
+    Play track of given pl for snippet_length on to_play_device. to_play_device is converted to Spotify device id
     """
     num_tracks = len(pl_data['tracks']['items'])
-    track_idx = randint(0, num_tracks - 1)
+    if shuffle not in (0, 1):
+        raise ValueError("shuffle must be either 0 or 1")
+    if shuffle == 0:
+        if pl_idx >= num_tracks:
+            raise ValueError("pl_idx of %.0f exceeds num_tracks of %.0f" % (pl_idx, num_tracks))
+        track_idx = pl_idx
+    else:
+        track_idx = randint(0, num_tracks - 1)
     track_data = get_track_by_index(pl_data, track_idx)
     track_id = track_data['id']
     available_devices = retrieve_devices(sp_obj)
